@@ -3,6 +3,7 @@ package ru.netology.ticket;
 import java.util.Arrays;
 
 public class TicketManager {
+    TicketTimeComparator timeComparator = new TicketTimeComparator();
     private TicketRepository repository;
 
     public TicketManager(TicketRepository repository) {
@@ -21,7 +22,7 @@ public class TicketManager {
                 result = tmp;
             }
         }
-        Arrays.sort(result);
+        Arrays.sort(result, timeComparator);
         return result;
     }
 

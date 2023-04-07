@@ -35,6 +35,7 @@ public class TicketManagerTest {
         Ticket[] actual = manager.findAll("SVX", "DME");
         Assertions.assertArrayEquals(expected, actual);
     }
+    
     @Test
     public void searchByAirportMorePrice() {
         repository.add(ticket_1);

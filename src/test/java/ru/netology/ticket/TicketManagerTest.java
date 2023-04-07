@@ -19,7 +19,7 @@ public class TicketManagerTest {
     Ticket ticket_10 = new Ticket(1000, 30_000, "SVX", "DME", 95);
 
     @Test
-    public void searchByAirportMore() {
+    public void searchByAirportMoreTime() {
         repository.add(ticket_1);
         repository.add(ticket_2);
         repository.add(ticket_3);
@@ -32,7 +32,24 @@ public class TicketManagerTest {
         repository.add(ticket_10);
 
         Ticket[] expected = {ticket_7, ticket_10, ticket_1, ticket_4, ticket_5, ticket_3, ticket_9, ticket_8};
-        Ticket[] actual = manager.searchByAirport("SVX", "DME");
+        Ticket[] actual = manager.findAll("SVX", "DME");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void searchByAirportMorePrice() {
+        repository.add(ticket_1);
+        repository.add(ticket_2);
+        repository.add(ticket_3);
+        repository.add(ticket_4);
+        repository.add(ticket_5);
+        repository.add(ticket_6);
+        repository.add(ticket_7);
+        repository.add(ticket_8);
+        repository.add(ticket_9);
+        repository.add(ticket_10);
+
+        Ticket[] expected = {ticket_3, ticket_4, ticket_9, ticket_5, ticket_1, ticket_8, ticket_7, ticket_10};
+        Ticket[] actual = manager.searchByAirportPrice("SVX", "DME");
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -43,7 +60,7 @@ public class TicketManagerTest {
 
 
         Ticket[] expected = {};
-        Ticket[] actual = manager.searchByAirport("SVX", "DME");
+        Ticket[] actual = manager.searchByAirportPrice("SVX", "DME");
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -55,7 +72,7 @@ public class TicketManagerTest {
 
 
         Ticket[] expected = {ticket_4};
-        Ticket[] actual = manager.searchByAirport("SVX", "DME");
+        Ticket[] actual = manager.searchByAirportPrice("SVX", "DME");
         Assertions.assertArrayEquals(expected, actual);
     }
 }

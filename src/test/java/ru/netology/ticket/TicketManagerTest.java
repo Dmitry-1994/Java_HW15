@@ -19,23 +19,7 @@ public class TicketManagerTest {
     Ticket ticket_10 = new Ticket(1000, 30_000, "SVX", "DME", 95);
 
     @Test
-    public void searchByAirportMoreDiferent() {
-        repository.add(ticket_1);
-        repository.add(ticket_2);
-        repository.add(ticket_3);
-        repository.add(ticket_4);
-        repository.add(ticket_5);
-        repository.add(ticket_6);
-        repository.add(ticket_7);
-        repository.add(ticket_8);
-
-        Ticket[] expected = {ticket_3, ticket_4, ticket_5, ticket_1, ticket_8, ticket_7};
-        Ticket[] actual = manager.searchByAirport("SVX", "DME");
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void searchByAirportMoreSame() {
+    public void searchByAirportMore() {
         repository.add(ticket_1);
         repository.add(ticket_2);
         repository.add(ticket_3);

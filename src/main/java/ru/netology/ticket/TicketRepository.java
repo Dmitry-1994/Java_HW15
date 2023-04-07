@@ -2,6 +2,7 @@ package ru.netology.ticket;
 
 public class TicketRepository {
     private Ticket[] tickets = new Ticket[0];
+
     public void add(Ticket ticket) {
         if (findById(ticket.getId()) != null) {
             throw new AlreadyExistsException(
@@ -19,6 +20,7 @@ public class TicketRepository {
     public Ticket[] findAll() {
         return tickets;
     }
+
     public void removeById(int id) {
         if (findById(id) == null) {
             throw new NotFoundException(

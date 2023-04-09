@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class TicketManager {
-    TicketTimeComparator timeComparator = new TicketTimeComparator();
     private TicketRepository repository;
 
     public TicketManager(TicketRepository repository) {
@@ -26,7 +25,7 @@ public class TicketManager {
         Arrays.sort(result);
         return result;
     }
-    public Ticket[] findAll(String from, String to) {
+    public Ticket[] findAll(String from, String to, TicketTimeComparator comparator) {
         Ticket[] result = new Ticket[0];
         for (Ticket ticket : repository.findAll()) {
             if ((ticket.getAirportOut().equals(from)) && (ticket.getAirportIn().equals(to))) {
@@ -38,7 +37,7 @@ public class TicketManager {
                 result = tmp;
             }
         }
-        Arrays.sort(result, timeComparator);
+        Arrays.sort(result, comparator);
         return result;
     }
 

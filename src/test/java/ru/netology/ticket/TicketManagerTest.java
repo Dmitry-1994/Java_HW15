@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TicketManagerTest {
+    TicketTimeComparator timeComparator = new TicketTimeComparator();
     TicketRepository repository = new TicketRepository();
     TicketManager manager = new TicketManager(repository);
 
@@ -32,7 +33,7 @@ public class TicketManagerTest {
         repository.add(ticket_10);
 
         Ticket[] expected = {ticket_7, ticket_10, ticket_1, ticket_4, ticket_5, ticket_3, ticket_9, ticket_8};
-        Ticket[] actual = manager.findAll("SVX", "DME");
+        Ticket[] actual = manager.findAll("SVX", "DME", timeComparator);
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
